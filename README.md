@@ -36,4 +36,4 @@ npm run dev
 ```
 
 ### License
-GNU GPL v3.0. Don't be a dick and try to sell this as your own.
+GNU GPL v3.0.
