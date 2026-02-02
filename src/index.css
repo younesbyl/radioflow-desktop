@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  * {
+    @apply border-zinc-800;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-sans;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-background-tertiary rounded-full;
+    transition: background-color 0.2s;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-hover;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-zinc-900/60 backdrop-blur-md border border-white/10;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-light text-white font-bold py-2 px-6 rounded-full transition-all duration-200 shadow-glow-indigo;
+  }
+
+  .btn-primary:active {
+    @apply scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-surface hover:bg-surface-hover text-text-primary font-bold py-2 px-6 rounded-full transition-all duration-200;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply transform -translate-y-1 shadow-2xl;
+  }
+
+  /* Text ellipsis */
+  .text-ellipsis {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-zinc-800 rounded;
+  }
+}
+
+@layer utilities {
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Playing animation */
+  .playing-indicator {
+    position: relative;
+  }
+
+  .playing-indicator::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid theme('colors.primary.DEFAULT');
+    border-radius: inherit;
+    animation: pulseIndigo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes pulseIndigo {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+  }
+
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 12px rgba(99, 102, 241, 0);
+  }
+}
